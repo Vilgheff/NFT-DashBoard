@@ -27,6 +27,16 @@ const StyledNFTCard = styled.div`
     justify-content: space-between;
     align-items: center;
     flex-direction: row;
+    font-family: "DM Sans";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 21px;
+    font-feature-settings: "salt" on;
+
+    /* Text/color2 */
+
+    color: #747475;
   }
   .text-content-left {
     width: 50%;
@@ -35,6 +45,13 @@ const StyledNFTCard = styled.div`
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
+  }
+  .text-content-right{
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
   }
   .text-content-left-name {
     font-family: "DM Sans";
@@ -62,13 +79,17 @@ const StyledNFTCard = styled.div`
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
-
     font-feature-settings: "salt" on;
     color: #747475;
   }
   img {
     height: 28px;
     width: 28px;
+  }
+  .prices{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
   }
 `;
 
@@ -105,7 +126,7 @@ export const NFTCard = ({
         </div>
         <div className="text-content-right">
           <span>{curLikes}K Likes</span>
-          <span>
+          <span className="prices">
             <img src={ethIcon} alt="ethIcon" />
             {curBid} ETH
           </span>
