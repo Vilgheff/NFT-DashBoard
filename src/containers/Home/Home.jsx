@@ -1,5 +1,5 @@
 import { Button } from "components/Button";
-import { Card } from "components/Card";
+import { Card, NFTCard } from "components/Card";
 import { styled } from "styled-components";
 import { PrimaryLayout } from "components/Layout";
 import { Banner } from "components/Banner/Banner";
@@ -45,6 +45,7 @@ export const Home = () => {
           </Card>
         </div>
       </AppWrapper>
+      <NFTCard name="Ape In Love" nameTag="@johnti60" curBid="9.10" curLikes="21,5"></NFTCard>
     </PrimaryLayout>
   );
 };
