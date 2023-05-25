@@ -2,6 +2,7 @@ import { Button } from "components/Button";
 import { Card } from "components/Card";
 import { styled } from "styled-components";
 import { PrimaryLayout } from "components/Layout";
+import { Banner } from "components/Banner/Banner";
 const AppWrapper = styled.div`
   text-align: center;
   .button-content {
@@ -26,6 +27,7 @@ const AppWrapper = styled.div`
 export const Home = () => {
   return (
     <PrimaryLayout>
+      <Banner>Discover, Create and Sell Your Own NFT.</Banner>
       <AppWrapper>
         <div className="card-wrapper">
           <Card title="Revenue" amount="5.00" percent={12.3}>

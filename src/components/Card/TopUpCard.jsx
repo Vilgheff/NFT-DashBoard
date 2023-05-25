@@ -1,4 +1,8 @@
 import styled from "styled-components";
+import { TopUpButton } from "components/Button";
+import ethIcon from "assets/Ethereum-topup.svg";
+import topupIcon from "assets/TopUpButtonIcon.svg";
+import grayIcon from "assets/GrayArrow.svg";
 const StyleTopUpCard = styled.div`
   width: 228px;
   height: 220px;
@@ -35,6 +39,15 @@ export const TopUpCard = ({ title, content }) => {
     <StyleTopUpCard>
       <div className="title">{title}</div>
       <div className="content">{content}</div>
+      <span>
+        <img src={ethIcon} alt="ethIcon" />
+        ETH
+      </span>
+      <TopUpButton>
+        <img src={topupIcon} alt="topupIcon" />
+        Top Up Balance
+        <img src={grayIcon} alt="grayIcon" />
+      </TopUpButton>
     </StyleTopUpCard>
   );
 };
