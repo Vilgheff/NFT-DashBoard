@@ -11,6 +11,7 @@ const StyledNFTCard = styled.div`
   justify-content: space-evenly;
   flex-direction: column;
   align-items: center;
+  margin: 20px;
   .nft-banner {
     height: 196px;
     width: 90%;

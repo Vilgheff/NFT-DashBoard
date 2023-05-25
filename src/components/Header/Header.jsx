@@ -1,15 +1,15 @@
 import styled from "styled-components";
 import searhIcon from "assets/SearchIcon.svg";
 import notiIcon from "assets/Notification-Icon.svg";
-import avtIcon from "assets/Avt.svg"
+import avtIcon from "assets/Avt.svg";
 const HeaderStyled = styled.div`
-      position: fixed;
-    z-index: 99;
-    width: 100%;
-    height: 56px;
-    display: flex;
-    justify-content: space-around;
-    background-color: #caeae6;
+  position: fixed;
+  z-index: 99;
+  width: 100%;
+  height: 56px;
+  display: flex;
+  justify-content: space-between;
+  background-color: #caeae6;
   form {
     color: #555;
     display: flex;
@@ -18,6 +18,7 @@ const HeaderStyled = styled.div`
     padding: 0;
     border-radius: 35px;
     background-color: white;
+    margin-left: 32px;
   }
   input {
     border: 0px solid #555;
@@ -47,7 +48,7 @@ const HeaderStyled = styled.div`
 
     border: 1px solid #e9e9e9;
   }
-  .avt{
+  .avt {
     border-radius: 50px;
   }
 `;
@@ -65,7 +66,9 @@ const Header = () => {
         <span className="noti">
           <img src={notiIcon} alt="notiIcon" />
         </span>
-        <span><img src={avtIcon} alt="avtIcon" /></span>
+        <span>
+          <img src={avtIcon} alt="avtIcon" />
+        </span>
       </div>
     </HeaderStyled>
   );

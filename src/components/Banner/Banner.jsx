@@ -2,17 +2,19 @@ import { Button } from "components/Button";
 import styled from "styled-components";
 import banner from "assets/Banner.svg";
 const StyledBanner = styled.div`
-  height: 354px;
+  height: 500px;
   border-radius: 12px;
-  width: 57%;
+  width: 65%;
+  margin-left: 32px;
   display: flex;
 
   background: linear-gradient(
-      75.33deg,
-      rgba(0, 0, 0, 0.2) -10.41%,
-      rgba(0, 0, 0, 0) 62.93%
-    ),
-    url(${banner}) no-repeat;
+    75.33deg,
+    rgba(0, 0, 0, 0.2) -10.41%,
+    rgba(0, 0, 0, 0) 62.93%
+  );
+  background-image: url(${banner});
+  background-repeat: no-repeat;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;

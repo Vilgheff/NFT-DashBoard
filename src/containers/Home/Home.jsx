@@ -5,7 +5,10 @@ import { PrimaryLayout } from "components/Layout";
 import { Banner } from "components/Banner/Banner";
 const AppWrapper = styled.div`
   text-align: center;
-  display: flex;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
   .button-content {
     display: flex;
     align-items: center;
@@ -16,7 +19,7 @@ const AppWrapper = styled.div`
     color: #27262e;
   }
   .card-wrapper {
-    width: 500px;
+    width: 35%;
     height: 500px;
     display: flex;
     gap: 20px;
@@ -24,6 +27,11 @@ const AppWrapper = styled.div`
     align-items: center;
     justify-content: center;
   }
+`;
+const NFTWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
 `;
 export const Home = () => {
   return (
@@ -45,7 +53,32 @@ export const Home = () => {
           </Card>
         </div>
       </AppWrapper>
-      <NFTCard name="Ape In Love" nameTag="@johnti60" curBid="9.10" curLikes="21,5"></NFTCard>
+      <NFTWrapper>
+        <NFTCard
+          name="Ape In Love"
+          nameTag="@johnti60"
+          curBid="9.10"
+          curLikes="21,5"
+        ></NFTCard>
+        <NFTCard
+          name="Ape In Love"
+          nameTag="@johnti60"
+          curBid="9.10"
+          curLikes="21,5"
+        ></NFTCard>
+        <NFTCard
+          name="Ape In Love"
+          nameTag="@johnti60"
+          curBid="9.10"
+          curLikes="21,5"
+        ></NFTCard>
+        <NFTCard
+          name="Ape In Love"
+          nameTag="@johnti60"
+          curBid="9.10"
+          curLikes="21,5"
+        ></NFTCard>
+      </NFTWrapper>
     </PrimaryLayout>
   );
 };
