@@ -10,6 +10,7 @@ const StyledButton = styled.button`
   background: ${(props) => props.bgColor};
   font-weight: 500;
   line-height: 21px;
+  margin-right: ${(props)=>props.marginright};
   color: ${(props) => props.textColor};
   color: ${(props) => props.fontSize};
   img {
@@ -27,6 +28,7 @@ export const Button = ({
   boderColor,
   percent,
   fontSize,
+  marginright,
   children,
   ...rest
 }) => {
@@ -39,6 +41,7 @@ export const Button = ({
       bgColor={bgColor}
       boderColor={boderColor}
       fontSize={fontSize}
+      marginright = {marginright}
       {...rest}
     >
       {percent && (

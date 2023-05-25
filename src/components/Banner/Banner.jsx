@@ -6,9 +6,16 @@ const StyledBanner = styled.div`
   border-radius: 12px;
   width: 57%;
   display: flex;
-  background: transparent url(${banner}) no-repeat;
+
+  background: linear-gradient(
+      75.33deg,
+      rgba(0, 0, 0, 0.2) -10.41%,
+      rgba(0, 0, 0, 0) 62.93%
+    ),
+    url(${banner}) no-repeat;
   flex-direction: column;
   justify-content: center;
+  align-items: flex-start;
   .text {
     font-family: "DM Sans";
     font-style: normal;
@@ -16,9 +23,9 @@ const StyledBanner = styled.div`
     font-size: 54px;
     line-height: 120%;
     /* or 65px */
-
+    width: 50%;
     letter-spacing: -0.02em;
-
+    text-align: left;
     color: #ffffff;
     margin-bottom: 24px;
     margin-left: 60px;
@@ -26,6 +33,9 @@ const StyledBanner = styled.div`
   .button-group {
     display: flex;
     margin-left: 60px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
   }
 `;
 export const Banner = ({ children, ...rest }) => {
@@ -33,8 +43,12 @@ export const Banner = ({ children, ...rest }) => {
     <StyledBanner {...rest}>
       <div className="text">{children}</div>
       <div className="button-group">
-        <Button>Discover</Button>
-        <Button>Create</Button>
+        <Button textColor="#5429FF" marginright="12px">
+          Discover
+        </Button>
+        <Button bgColor="transparent" textColor="white" boderColor="white">
+          Create
+        </Button>
       </div>
     </StyledBanner>
   );

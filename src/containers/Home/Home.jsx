@@ -5,6 +5,7 @@ import { PrimaryLayout } from "components/Layout";
 import { Banner } from "components/Banner/Banner";
 const AppWrapper = styled.div`
   text-align: center;
+  display: flex;
   .button-content {
     display: flex;
     align-items: center;
@@ -27,8 +28,8 @@ const AppWrapper = styled.div`
 export const Home = () => {
   return (
     <PrimaryLayout>
-      <Banner>Discover, Create and Sell Your Own NFT.</Banner>
       <AppWrapper>
+        <Banner>Discover, Create and Sell Your Own NFT.</Banner>
         <div className="card-wrapper">
           <Card title="Revenue" amount="5.00" percent={12.3}>
             <Button></Button>
