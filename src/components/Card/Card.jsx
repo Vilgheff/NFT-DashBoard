@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Button } from "../../components/Button";
 import ethIcon from "../../assets/Ethereum-blue.svg";
 const StyledCard = styled.div`
-  width: 164px;
+  width: 35%;
   height: 167px;
   display: flex;
   align-items: center;

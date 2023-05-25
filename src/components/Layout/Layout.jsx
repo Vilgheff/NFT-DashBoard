@@ -1,19 +1,25 @@
 import Header from "components/Header";
 import styled from "styled-components";
 import { SideBar } from "components/SideBar";
-
+const Container = styled.div`
+  display: flex;
+  background: gray;
+  background-size: 400% 400%;
+  justify-content: center;
+`;
 const LayoutStyled = styled.div`
-  background-color: #CAEAE6;
-  min-height: 100vh;
+  background-color: #caeae6;
+  min-height: 150vh;
+  width: 1440px;
   .right {
     float: right;
     width: 80%;
   }
 `;
 const ContentStyled = styled.div`
-  background-color: #CAEAE6;
+  background-color: #caeae6;
   margin-top: 64px;
-  height: 100vh;
+  height: 120vh;
 `;
 const SideBarStyled = styled.div`
   background-color: #88e76b;
@@ -28,15 +34,17 @@ const SideBarStyled = styled.div`
 
 const PrimaryLayout = ({ children }) => {
   return (
-    <LayoutStyled>
-      <SideBarStyled>
-        <SideBar></SideBar> 
-      </SideBarStyled>
-      <div className="right">
-        <Header />
-        <ContentStyled>{children}</ContentStyled>
-      </div>
-    </LayoutStyled>
+    <Container>
+      <LayoutStyled>
+        <SideBarStyled>
+          <SideBar></SideBar>
+        </SideBarStyled>
+        <div className="right">
+          <Header />
+          <ContentStyled>{children}</ContentStyled>
+        </div>
+      </LayoutStyled>
+    </Container>
   );
 };
 

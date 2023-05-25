@@ -14,7 +14,7 @@ import { TopUpCard } from "components/Card";
 const StyledSideBar = styled.div`
   background-color: white;
   width: 100%;
-  height: 100vh;
+  height: 120vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;

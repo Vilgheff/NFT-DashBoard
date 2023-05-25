@@ -4,7 +4,7 @@ import banner from "assets/Banner.svg";
 const StyledBanner = styled.div`
   height: 500px;
   border-radius: 12px;
-  width: 65%;
+  width: 60%;
   margin-left: 32px;
   display: flex;
 

@@ -3,7 +3,7 @@ import nftPic from "assets/MonkeyNFT.jpg";
 import avtPic from "assets/Avt.svg";
 import ethIcon from "assets/Ethereum.svg";
 const StyledNFTCard = styled.div`
-  width: 348px;
+  width: 45%;
   height: 364px;
   background: #ffffff;
   border-radius: 16px;
@@ -11,7 +11,7 @@ const StyledNFTCard = styled.div`
   justify-content: space-evenly;
   flex-direction: column;
   align-items: center;
-  margin: 20px;
+  margin: 20px 0px;
   .nft-banner {
     height: 196px;
     width: 90%;
@@ -20,6 +20,7 @@ const StyledNFTCard = styled.div`
     height: 100%;
     width: 100%;
     border-radius: 12px;
+    object-fit: cover;
   }
   .text-content {
     height: 110px;
@@ -47,7 +48,7 @@ const StyledNFTCard = styled.div`
     justify-content: space-between;
     align-items: flex-start;
   }
-  .text-content-right{
+  .text-content-right {
     display: flex;
     height: 100%;
     flex-direction: column;
@@ -87,7 +88,7 @@ const StyledNFTCard = styled.div`
     height: 28px;
     width: 28px;
   }
-  .prices{
+  .prices {
     display: flex;
     flex-direction: row;
     align-items: center;
