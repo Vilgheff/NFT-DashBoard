@@ -1,3 +1,4 @@
+
 import { styled } from "styled-components";
 import { ReactComponent as DashboardIcon } from "assets/DashBoard-Icon.svg";
 import { ReactComponent as MarketIcon } from "assets/Market-Icon.svg";
@@ -11,6 +12,7 @@ import { ReactComponent as ThemechangeIcon } from "assets/Theme-Icon.svg";
 import { NavLink } from "react-router-dom";
 import { TopUpCard } from "components/Card";
 import { Logo } from "components/Logo/Logo";
+
 const StyledSideBar = styled.div`
   background-color: white;
   width: 100%;
@@ -21,7 +23,7 @@ const StyledSideBar = styled.div`
   align-items: center;
   .text {
     width: 100%;
-    margin: 15px 0px 25px 32px;
+    margin: 15px 0px 25px 94px;
     font-family: "DM Sans";
     font-style: normal;
     font-weight: 700;
@@ -52,17 +54,31 @@ const StyledSideBar = styled.div`
 const StyledNavItem = styled.div`
   display: flex;
   align-items: center;
-  gap: 16px;
+  height: 30px;
   font-size: 16px;
   font-weight: 500;
   line-height: 21px;
   color: #7a797d;
   margin-bottom: 25px;
   a {
+    width: 100%;
+    display: flex;
     text-decoration: unset;
     color: #7a797d;
+    align-items: center;
+    margin-left: 30px;
+    gap: 16px;
   }
-  path {
+  .active {
+    svg {
+      path {
+        stroke: #5429ff;
+      }
+    }
+    color: #5429ff;
+  }
+  .NavLink{
+    width: 100%;
   }
 `;
 const StyleSwitchButton = styled.div`
@@ -121,14 +137,8 @@ const StyleSwitchButton = styled.div`
 const NavItem = ({ path, text, icon }) => {
   return (
     <StyledNavItem>
-      {icon}
-      <NavLink
-        to={path}
-        style={({ isActive }) => ({
-          color: isActive ? "#5429FF" : "#7A797D",
-          stroke: isActive ? "#5429FF" : "#7A797D",
-        })}
-      >
+      <NavLink to={path}>
+        {icon}
         {text}
       </NavLink>
     </StyledNavItem>
