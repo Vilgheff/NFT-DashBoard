@@ -1,13 +1,13 @@
 import { styled } from "styled-components";
-import dashboardIcon from "assets/DashBoard-Icon.svg";
-import marketIcon from "assets/Market-Icon.svg";
-import activevbidsIcon from "assets/ActiveBids-Icon.svg";
-import myportfolioIcon from "assets/MyPortfolio-Icon.svg";
-import walletIcon from "assets/Wallet-Icon.svg";
-import favoritesIcon from "assets/Favourites-Icon.svg";
-import historyIcon from "assets/History-Icon.svg";
-import settingsIcon from "assets/Settings-Icon.svg";
-import themechangeIcon from "assets/Theme-Icon.svg";
+import { ReactComponent as DashboardIcon } from "assets/DashBoard-Icon.svg";
+import { ReactComponent as MarketIcon } from "assets/Market-Icon.svg";
+import { ReactComponent as ActivevbidsIcon } from "assets/ActiveBids-Icon.svg";
+import { ReactComponent as MyportfolioIcon } from "assets/MyPortfolio-Icon.svg";
+import { ReactComponent as WalletIcon } from "assets/Wallet-Icon.svg";
+import { ReactComponent as FavoritesIcon } from "assets/Favourites-Icon.svg";
+import { ReactComponent as HistoryIcon } from "assets/History-Icon.svg";
+import { ReactComponent as SettingsIcon } from "assets/Settings-Icon.svg";
+import { ReactComponent as ThemechangeIcon } from "assets/Theme-Icon.svg";
 import { NavLink } from "react-router-dom";
 import { TopUpCard } from "components/Card";
 import { Logo } from "components/Logo/Logo";
@@ -36,15 +36,17 @@ const StyledSideBar = styled.div`
 
     color: #27262e;
   }
-  .nav, .theme {
+  .nav,
+  .theme {
     width: 100%;
     margin-left: 32px;
   }
-  .theme{
+  .theme {
     display: flex;
     flex-direction: row;
     align-items: center;
     flex-wrap: wrap;
+    gap: 15%;
   }
 `;
 const StyledNavItem = styled.div`
@@ -60,10 +62,12 @@ const StyledNavItem = styled.div`
     text-decoration: unset;
     color: #7a797d;
   }
+  path {
+  }
 `;
 const StyleSwitchButton = styled.div`
-display: flex;
-margin-bottom: 25px;
+  display: flex;
+  margin-bottom: 25px;
   input[type="checkbox"] {
     height: 0;
     width: 0;
@@ -117,8 +121,16 @@ margin-bottom: 25px;
 const NavItem = ({ path, text, icon }) => {
   return (
     <StyledNavItem>
-      <img src={icon} alt="nav-icon" />
-      <NavLink to={path}>{text}</NavLink>
+      {icon}
+      <NavLink
+        to={path}
+        style={({ isActive }) => ({
+          color: isActive ? "#5429FF" : "#7A797D",
+          stroke: isActive ? "#5429FF" : "#7A797D",
+        })}
+      >
+        {text}
+      </NavLink>
     </StyledNavItem>
   );
 };
@@ -135,21 +147,49 @@ export const SideBar = () => {
     <StyledSideBar>
       <Logo></Logo>
       <div className="nav">
-        <NavItem text="Dashboard" path="/" icon={dashboardIcon}></NavItem>
-        <NavItem text="Market" path="/" icon={marketIcon}></NavItem>
-        <NavItem text="Active Bids" path="/" icon={activevbidsIcon}></NavItem>
+        <NavItem
+          text="Dashboard"
+          path="/"
+          icon={<DashboardIcon></DashboardIcon>}
+        ></NavItem>
+        <NavItem text="Market" path="/market" icon={<MarketIcon />}></NavItem>
+        <NavItem
+          text="Active Bids"
+          path="/active-bids"
+          icon={<ActivevbidsIcon />}
+        ></NavItem>
       </div>
       <div className="text">Profile</div>
       <div className="nav">
-        <NavItem text="My Portfolio" path="/" icon={myportfolioIcon}></NavItem>
-        <NavItem text="Wallet" path="/" icon={walletIcon}></NavItem>
-        <NavItem text="Favourites" path="/" icon={favoritesIcon}></NavItem>
-        <NavItem text="History" path="/" icon={historyIcon}></NavItem>
-        <NavItem text="Settings" path="/" icon={settingsIcon}></NavItem>
+        <NavItem
+          text="My Portfolio"
+          path="/my-pỏtfolio"
+          icon={<MyportfolioIcon />}
+        ></NavItem>
+        <NavItem text="Wallet" path="/wallet" icon={<WalletIcon />}></NavItem>
+        <NavItem
+          text="Favourites"
+          path="/favourites"
+          icon={<FavoritesIcon />}
+        ></NavItem>
+        <NavItem
+          text="History"
+          path="/history"
+          icon={<HistoryIcon />}
+        ></NavItem>
+        <NavItem
+          text="Settings"
+          path="/settings"
+          icon={<SettingsIcon />}
+        ></NavItem>
       </div>
       <div className="text">Other</div>
       <div className="theme">
-        <NavItem text="Light Mode" path="/" icon={themechangeIcon}></NavItem>
+        <NavItem
+          text="Light Mode"
+          path="/"
+          icon={<ThemechangeIcon />}
+        ></NavItem>
         <SwitchButton></SwitchButton>
       </div>
       <TopUpCard title="Your Balance" content="1,034.02"></TopUpCard>

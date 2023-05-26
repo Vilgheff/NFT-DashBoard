@@ -4,6 +4,7 @@ import { Home } from "containers/Home/Home";
 import { About } from "containers/About/About";
 import { Login } from "containers/Login";
 import { NotFoundPage } from "containers/404NotFound";
+import { Market } from "containers/Market";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Route path="/" element={<Home></Home>}></Route>
       <Route path="/about" element={<About></About>}></Route>
       <Route path="/login" element={<Login></Login>}></Route>
+      <Route path="/market" element={<Market></Market>}></Route>
       <Route path="*" element={<NotFoundPage></NotFoundPage>}></Route>
     </Routes>
   );

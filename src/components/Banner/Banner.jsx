@@ -25,7 +25,7 @@ const StyledBanner = styled.div`
     font-size: 54px;
     line-height: 120%;
     /* or 65px */
-    width: 50%;
+    width: 80%;
     letter-spacing: -0.02em;
     text-align: left;
     color: #ffffff;

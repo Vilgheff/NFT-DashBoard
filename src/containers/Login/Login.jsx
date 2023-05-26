@@ -1,6 +1,5 @@
 import { styled } from "styled-components";
-import personImage from "assets/loginAssets/Character-working-laptop-sitting-chair.svg";
-import cactusImage from "assets/loginAssets/cactus.svg";
+import loginImg from "assets/loginAssets/LoginImg.svg"
 import ggIcon from "assets/loginAssets/Google.svg";
 import gitIcon from "assets/loginAssets/Github.svg";
 import fbIcon from "assets/loginAssets/Facebook.svg";
@@ -35,7 +34,7 @@ const LoginContainer = styled.div`
     position: absolute;
     width: 75%;
     height: 849px;
-    background: rgb(255, 255, 255);
+    background: linear-gradient(90deg, #FFFFFF 0%, #BBAAFF 66.67%);
     border-radius: 40px;
     display: flex;
     flex-direction: row;
@@ -65,7 +64,8 @@ const LoginContainer = styled.div`
     display: flex;
     align-items: flex-end;
     width: 50%;
-    height: 90%;
+    height: 100%;
+    justify-content: center;
   }
   .username,
   .pass {
@@ -142,7 +142,7 @@ const LoginContainer = styled.div`
   }
   img {
     z-index: 999;
-    max-width: 75%;
+    max-width: 100%;
     height: auto;
   }
   .input-group {
@@ -287,11 +287,9 @@ export const Login = () => {
         </div>
 
         <div className="loginPage-right">
-          <img src={personImage} alt="" />
-          <img src={cactusImage} alt="" />
+          <img src={loginImg} alt="" />
         </div>
       </div>
-      <div className="loginPageColor"></div>
     </LoginContainer>
   );
 };
