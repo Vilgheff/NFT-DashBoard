@@ -61,7 +61,7 @@ export const Card = ({ title, amount, content, percent }) => {
         </div>
       ) : (
         <div className="ammount-wrapper">
-          <span className="content">{content}</span> 
+          <span className="content">{content > 0 ? `+${content}`:`${content}`}</span> 
           <span className="text"> %</span>
         </div>
       )}

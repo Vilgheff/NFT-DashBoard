@@ -2,6 +2,7 @@ import Header from "components/Header";
 import styled from "styled-components";
 import { SideBar } from "components/SideBar";
 const Container = styled.div`
+  position: relative;
   display: flex;
   background: gray;
   background-size: 400% 400%;
@@ -22,14 +23,14 @@ const ContentStyled = styled.div`
   height: 120vh;
 `;
 const SideBarStyled = styled.div`
-  background-color: #88e76b;
+  background-color: white;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   float: left;
   width: 20%;
-  height: 100vh;
+  height: 150vh;
 `;
 
 const PrimaryLayout = ({ children }) => {

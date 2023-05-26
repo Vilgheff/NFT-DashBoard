@@ -1,4 +1,3 @@
-import { Button } from "components/Button";
 import { Card, CreatorCard, NFTCard } from "components/Card";
 import { styled } from "styled-components";
 import { PrimaryLayout } from "components/Layout";
@@ -96,6 +95,66 @@ const MainContentWrapper = styled.div`
     color: #27262e;
   }
 `;
+const fakeData = [
+  {
+    title: "Revenue",
+    amount: 5.0,
+    percent: -12.3,
+  },
+  {
+    title: "Spending",
+    amount: 2.0,
+    percent: 12.3,
+  },
+  {
+    title: "ROI",
+    content: -14.3,
+    percent: 12.3,
+  },
+  {
+    title: "Estimated",
+    amount: 7.0,
+    percent: -3.2,
+  },
+];
+const nftFakeData = [
+  {
+    imgSrc: "https://gimg.gateimg.com/image/1624359131881493888.png",
+    avtSrc:
+      "https://th.bing.com/th/id/OIP.2HgWxlt6o5NKSicmnfV6rwHaHa?pid=ImgDet&rs=1",
+    name: "Ape In Love",
+    nameTag: "@johnti60",
+    curBid: "9.10",
+    curLikes: "21,5",
+  },
+  {
+    imgSrc: "https://static.nftgo.io/asset/metadata/image/fc4dcf2c07fabec146143afd4f4128a22820ffa38dae03326bc041398dc23d78",
+    avtSrc:
+      "https://th.bing.com/th/id/OIP.p5YlHStUuag7ued5Xaz_-gAAAA?pid=ImgDet&w=375&h=446&rs=1",
+    name: "Smilling Ape",
+    nameTag: "@m_alisson",
+    curBid: "6.12",
+    curLikes: "21,5",
+  },
+  {
+    imgSrc: "https://lh3.googleusercontent.com/SgABy6f-GavdXE_EjQhZ9Y2mUhIk9o3NjDUGtTVNdLSNGODV-mKflZcsaUZAbgxG8332ZAJbuIzx-v6g61LGc4VLCBJgW2wQxTrZRTw=w1400-k",
+    avtSrc:
+      "https://fundbox.asia/wp-content/uploads/2020/10/dominic.jpg",
+    name: "Ape In Love",
+    nameTag: "@johnti60",
+    curBid: "9.10",
+    curLikes: "21,5",
+  },
+  {
+    imgSrc: "https://lh3.googleusercontent.com/8D0gGsxMN_tMkurq3Z1kNwsXB3RWuSvdIu53hdeNYu1L5mFTiTwoMznSo3pM9oVJ7-F8rXTBeQNh6fWxldEZM-iMW_rRmteT8SrKTg=w1400-k",
+    avtSrc:
+      "https://th.bing.com/th/id/OIP.539tgKHuXhJ0hQIRzAfbQgHaIr?pid=ImgDet&w=700&h=821&rs=1",
+    name: "Ape In Love",
+    nameTag: "@johnti60",
+    curBid: "9.10",
+    curLikes: "21,5",
+  },
+];
 const CreatorWrapper = styled.div`
   width: 35%;
   height: 478px;
@@ -115,7 +174,15 @@ export const Home = () => {
       <AppWrapper>
         <Banner>Discover, Create and Sell Your Own NFT.</Banner>
         <div className="card-wrapper">
-          <Card title="Revenue" amount="5.00" percent={12.3}>
+          {fakeData.map((item) => (
+            <Card
+              title={item.title}
+              amount={item.amount}
+              percent={item.percent}
+              content={item.content}
+            ></Card>
+          ))}
+          {/* <Card title="Revenue" amount="5.00" percent={12.3}>
             <Button></Button>
           </Card>
           <Card title="Spending" amount="2.00" percent={8.1}>
@@ -126,7 +193,7 @@ export const Home = () => {
           </Card>
           <Card title="Estimated" amount="7.00" percent={3.2}>
             <Button></Button>
-          </Card>
+          </Card> */}
         </div>
       </AppWrapper>
       <WholeContent>
@@ -141,7 +208,17 @@ export const Home = () => {
             </ul>
           </div>
           <NFTWrapper>
-            <NFTCard
+            {nftFakeData.map((item) => (
+              <NFTCard
+                imgSrc={item.imgSrc}
+                avtSrc={item.avtSrc}
+                name={item.name}
+                nameTag={item.nameTag}
+                curBid={item.curBid}
+                curLikes={item.curLikes}
+              />
+            ))}
+            {/* <NFTCard
               name="Ape In Love"
               nameTag="@johnti60"
               curBid="9.10"
@@ -164,7 +241,7 @@ export const Home = () => {
               nameTag="@johnti60"
               curBid="9.10"
               curLikes="21,5"
-            ></NFTCard>
+            ></NFTCard> */}
           </NFTWrapper>
         </MainContentWrapper>
         <CreatorWrapper>

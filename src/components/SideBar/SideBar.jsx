@@ -1,5 +1,4 @@
 import { styled } from "styled-components";
-import logo from "assets/Logo.svg";
 import dashboardIcon from "assets/DashBoard-Icon.svg";
 import marketIcon from "assets/Market-Icon.svg";
 import activevbidsIcon from "assets/ActiveBids-Icon.svg";
@@ -11,6 +10,7 @@ import settingsIcon from "assets/Settings-Icon.svg";
 import themechangeIcon from "assets/Theme-Icon.svg";
 import { NavLink } from "react-router-dom";
 import { TopUpCard } from "components/Card";
+import { Logo } from "components/Logo/Logo";
 const StyledSideBar = styled.div`
   background-color: white;
   width: 100%;
@@ -19,41 +19,9 @@ const StyledSideBar = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  .logo {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    margin: 40px 0px;
-  }
-  .logo-text {
-    height: 21px;
-
-    font-family: "DM Sans";
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 21px;
-    /* identical to box height */
-
-    font-feature-settings: "salt" on;
-
-    color: #7a797d;
-
-    /* Inside auto layout */
-
-    flex: none;
-    order: 1;
-    flex-grow: 0;
-  }
-  .logo-desc {
-    font-size: 10px;
-    line-height: 13px;
-    color: #7a797d;
-  }
   .text {
-    width: 50%;
-    margin-top: 15px;
-    margin-bottom: 25px;
+    width: 100%;
+    margin: 15px 0px 25px 32px;
     font-family: "DM Sans";
     font-style: normal;
     font-weight: 700;
@@ -68,8 +36,15 @@ const StyledSideBar = styled.div`
 
     color: #27262e;
   }
-  .nav {
-    width: 50%;
+  .nav, .theme {
+    width: 100%;
+    margin-left: 32px;
+  }
+  .theme{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
   }
 `;
 const StyledNavItem = styled.div`
@@ -87,6 +62,8 @@ const StyledNavItem = styled.div`
   }
 `;
 const StyleSwitchButton = styled.div`
+display: flex;
+margin-bottom: 25px;
   input[type="checkbox"] {
     height: 0;
     width: 0;
@@ -156,13 +133,7 @@ const SwitchButton = () => {
 export const SideBar = () => {
   return (
     <StyledSideBar>
-      <div className="logo">
-        <img src={logo} alt="logo" />
-        <div>
-          <div className="logo-text"> MyNFT </div>
-          <div className="logo-desc">NFT Marketplace</div>
-        </div>
-      </div>
+      <Logo></Logo>
       <div className="nav">
         <NavItem text="Dashboard" path="/" icon={dashboardIcon}></NavItem>
         <NavItem text="Market" path="/" icon={marketIcon}></NavItem>
@@ -177,7 +148,7 @@ export const SideBar = () => {
         <NavItem text="Settings" path="/" icon={settingsIcon}></NavItem>
       </div>
       <div className="text">Other</div>
-      <div className="nav">
+      <div className="theme">
         <NavItem text="Light Mode" path="/" icon={themechangeIcon}></NavItem>
         <SwitchButton></SwitchButton>
       </div>

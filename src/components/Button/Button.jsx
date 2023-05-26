@@ -13,8 +13,9 @@ const StyledButton = styled.button`
   margin-right: ${(props)=>props.marginright};
   color: ${(props) => props.textColor};
   color: ${(props) => props.fontSize};
+  cursor: pointer;
   img {
-    margin-right: 8px;
+    margin-right: 0px;
   }
   display: flex;
   align-items: center;

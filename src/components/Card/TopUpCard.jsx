@@ -13,6 +13,7 @@ const StyleTopUpCard = styled.div`
   align-items: center;
   justify-content: center;
   margin-top: 108px;
+  gap: 10px;
   .title {
     height: 16px;
     background-color: transparent;
