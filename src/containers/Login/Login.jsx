@@ -1,11 +1,13 @@
+import { useState } from "react";
 import { styled } from "styled-components";
-import loginImg from "assets/loginAssets/LoginImg.svg"
+import loginImg from "assets/loginAssets/LoginImg.svg";
 import ggIcon from "assets/loginAssets/Google.svg";
 import gitIcon from "assets/loginAssets/Github.svg";
 import fbIcon from "assets/loginAssets/Facebook.svg";
 import arrowIcon from "assets/loginAssets/loginArrow.svg";
 import { Logo } from "components/Logo/Logo";
 import { Button } from "components/Button";
+import { NavLink } from "react-router-dom";
 const LoginContainer = styled.div`
   position: relative;
   display: flex;
@@ -34,7 +36,7 @@ const LoginContainer = styled.div`
     position: absolute;
     width: 75%;
     height: 849px;
-    background: linear-gradient(90deg, #FFFFFF 0%, #BBAAFF 66.67%);
+    background: linear-gradient(90deg, #ffffff 0%, #bbaaff 66.67%);
     border-radius: 40px;
     display: flex;
     flex-direction: row;
@@ -222,7 +224,39 @@ const LoginContainer = styled.div`
     }
   }
 `;
-export const Login = () => {
+
+async function checkValid({username, password}) {
+  return fetch("https://dummyjson.com/auth/login", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      username: {username},
+      password: {password},
+      // expiresInMins: 60, // optional
+    }),
+  })
+    .then((res) => res.json())
+    .then((res) => {
+      if (res.token) {
+        // Thanh cong
+        // luu vao local storage
+        localStorage.setItem("Username", res.username);
+        localStorage.setItem("Email", res.email);
+        localStorage.setItem("LastName", res.lastName);
+        localStorage.setItem("FirstName", res.firstName);
+        localStorage.setItem("imgAvata", res.image);
+        // chuyen trang
+      } else {
+        // Khong thanh cong
+        alert("Login Invalid");
+      }
+      console.log(res);
+    });
+}
+
+export const Login = ({namevalue, passvalue}) => {
+  const [Username, setUsername] = useState(namevalue);
+  const [Password, setPassword] = useState(passvalue);
   return (
     <LoginContainer>
       <div className="loginPage">
@@ -234,10 +268,12 @@ export const Login = () => {
               Username
             </label>
             <input
+            className="username"
               type="text"
               id="username"
               name="username"
               placeholder="username"
+              onInput={e=>{setUsername()}}
             />
           </div>
           <div className="pass">
@@ -251,10 +287,12 @@ export const Login = () => {
             </div>
             <div className="password-field">
               <input
+              className="Pass"
                 type="password"
                 id="Pass"
                 name="Pass"
                 placeholder="*********"
+                onInput={e => {setPassword()}}
               />
               <span
                 toggle="#password-field"
@@ -262,7 +300,7 @@ export const Login = () => {
               ></span>
             </div>
           </div>
-          <div className="input-group" onclick="checkValid()">
+          <div className="input-group" onClick={console.log(Username, Password)} >
             <Button bgColor="#d885a3" textColor="white">
               LOGIN IN <img src={arrowIcon} alt="arrowIcon"></img>
             </Button>
