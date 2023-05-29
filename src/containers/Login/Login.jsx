@@ -7,7 +7,8 @@ import fbIcon from "assets/loginAssets/Facebook.svg";
 import arrowIcon from "assets/loginAssets/loginArrow.svg";
 import { Logo } from "components/Logo/Logo";
 import { Button } from "components/Button";
-import { NavLink } from "react-router-dom";
+import { Form, Field } from "react-final-form";
+import { FORM_ERROR } from "final-form";
 const LoginContainer = styled.div`
   position: relative;
   display: flex;
@@ -81,6 +82,7 @@ const LoginContainer = styled.div`
   .password-field,
   .password-field input {
     width: 100%;
+    padding: 10px 0px;
   }
   .username-text,
   .pass-text {
@@ -223,111 +225,186 @@ const LoginContainer = styled.div`
       width: 65%;
     }
   }
+  form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 `;
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-async function checkValid({username, password}) {
-  return fetch("https://dummyjson.com/auth/login", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      username: {username},
-      password: {password},
-      // expiresInMins: 60, // optional
-    }),
-  })
-    .then((res) => res.json())
-    .then((res) => {
-      if (res.token) {
-        // Thanh cong
-        // luu vao local storage
-        localStorage.setItem("Username", res.username);
-        localStorage.setItem("Email", res.email);
-        localStorage.setItem("LastName", res.lastName);
-        localStorage.setItem("FirstName", res.firstName);
-        localStorage.setItem("imgAvata", res.image);
-        // chuyen trang
-      } else {
-        // Khong thanh cong
-        alert("Login Invalid");
-      }
-      console.log(res);
-    });
-}
+const onSubmit = async (values) => {
+  await sleep(300);
+  if (values.username !== "erikras") {
+    return { username: "Unknown username" };
+  }
+  if (values.password !== "finalformrocks") {
+    return { [FORM_ERROR]: "Login Failed" };
+  }
+  window.alert("LOGIN SUCCESS!");
+};
 
-export const Login = ({namevalue, passvalue}) => {
-  const [Username, setUsername] = useState(namevalue);
-  const [Password, setPassword] = useState(passvalue);
+export const Login = ({ namevalue, passvalue }) => {
   return (
     <LoginContainer>
       <div className="loginPage">
         <div className="loginPage-left">
           <Logo width="100%" margin="0px 0px"></Logo>
           <h2>Log In</h2>
-          <div className="username">
-            <label for="username" className="username-text">
-              Username
-            </label>
-            <input
-            className="username"
-              type="text"
-              id="username"
-              name="username"
-              placeholder="username"
-              onInput={e=>{setUsername()}}
-            />
-          </div>
-          <div className="pass">
-            <div className="pass-text">
-              <label for="Password" className="pass-text">
-                Password
-              </label>
-              <label for="ForgotPass" className="forgotpass">
-                Forgot Password ?
-              </label>
-            </div>
-            <div className="password-field">
-              <input
-              className="Pass"
-                type="password"
-                id="Pass"
-                name="Pass"
-                placeholder="*********"
-                onInput={e => {setPassword()}}
-              />
-              <span
-                toggle="#password-field"
-                className="fa fa-fw fa-eye field-icon toggle-password"
-              ></span>
-            </div>
-          </div>
-          <div className="input-group" onClick={console.log(Username, Password)} >
-            <Button bgColor="#d885a3" textColor="white">
-              LOGIN IN <img src={arrowIcon} alt="arrowIcon"></img>
-            </Button>
-          </div>
+          <Form
+            onSubmit={onSubmit}
+            validate={(values) => {
+              const errors = {};
+              if (!values.username) {
+                errors.username = "Required";
+              }
+              if (!values.password) {
+                errors.password = "Required";
+              }
+              return errors;
+            }}
+            render={({
+              submitError,
+              handleSubmit,
+              form,
+              submitting,
+              pristine,
+              values,
+            }) => (
+              <form onSubmit={handleSubmit}>
+                <Field name="username">
+                  {({ input, meta }) => (
+                    <div className="username">
+                      <label for="username" className="username-text" >Username</label>
+                      <input
+                        className="username"
+                        {...input}
+                        type="text"
+                        placeholder="Username"
+                      />
+                      {(meta.error || meta.submitError) && meta.touched && (
+                        <span>{meta.error || meta.submitError}</span>
+                      )}
+                    </div>
+                  )}
+                </Field>
+                <Field name="password">
+                  {({ input, meta }) => (
+                    <div className="pass">
+                      <div className="pass-text">
+                        <label for="Password" className="pass-text">
+                          Password
+                        </label>
+                        <label for="ForgotPass" className="forgotpass">
+                          Forgot Password ?
+                        </label>
+                      </div>
+                      <div className="password-field">
+                        <input
+                          className="password-field"
+                          {...input}
+                          type="password"
+                          placeholder="Password"
+                        />
+                        <span
+                          toggle="#password-field"
+                          className="fa fa-fw fa-eye field-icon toggle-password"
+                        ></span>
+                      </div>
 
-          <p className="continueW">or continue with</p>
-          <div className="login-methods">
-            <Button bgColor="transparent" boderColor="#6096b4">
-              <img src={ggIcon} alt="ggIcon"></img>
-            </Button>
-            <Button bgColor="transparent" boderColor="#6096b4">
-              <img src={gitIcon} alt="ggIcon"></img>
-            </Button>
-            <Button bgColor="transparent" boderColor="#6096b4">
-              <img src={fbIcon} alt="ggIcon"></img>
-            </Button>
-          </div>
-          <div className="signup">
-            <p className="noAccount">Don’t have an account yet?</p>
-            <p className="signUp">Sign up for free</p>
-          </div>
+                      {meta.error && meta.touched && <span>{meta.error}</span>}
+                    </div>
+                  )}
+                </Field>
+                {submitError && <div className="error">{submitError}</div>}
+                <div className="input-group">
+                  <Button
+                    bgColor="#d885a3"
+                    textColor="white"
+                    type="submit"
+                    disabled={submitting}
+                  >
+                    LOGIN IN <img src={arrowIcon} alt="arrowIcon"></img>
+                  </Button>
+                </div>
+              </form>
+            )}
+          />
         </div>
-
         <div className="loginPage-right">
           <img src={loginImg} alt="" />
         </div>
       </div>
     </LoginContainer>
+    //   <LoginContainer>
+    //   <div className="loginPage">
+    //     <div className="loginPage-left">
+    //       <Logo width="100%" margin="0px 0px"></Logo>
+    //       <h2>Log In</h2>
+    //       <div className="username">
+    //         <label for="username" className="username-text">
+    //           Username
+    //         </label>
+    //         <input
+    //         className="username"
+    //           type="text"
+    //           id="username"
+    //           name="username"
+    //           placeholder="username"
+    //         />
+    //       </div>
+    //       <div className="pass">
+    //         <div className="pass-text">
+    //           <label for="Password" className="pass-text">
+    //             Password
+    //           </label>
+    //           <label for="ForgotPass" className="forgotpass">
+    //             Forgot Password ?
+    //           </label>
+    //         </div>
+    //         <div className="password-field">
+    //           <input
+    //           className="Pass"
+    //             type="password"
+    //             id="Pass"
+    //             name="Pass"
+    //             placeholder="*********"
+    //           />
+    //           <span
+    //             toggle="#password-field"
+    //             className="fa fa-fw fa-eye field-icon toggle-password"
+    //           ></span>
+    //         </div>
+    //       </div>
+    //       <div className="input-group"  >
+    //         <Button bgColor="#d885a3" textColor="white">
+    //           LOGIN IN <img src={arrowIcon} alt="arrowIcon"></img>
+    //         </Button>
+    //       </div>
+
+    //       <p className="continueW">or continue with</p>
+    //       <div className="login-methods">
+    //         <Button bgColor="transparent" boderColor="#6096b4">
+    //           <img src={ggIcon} alt="ggIcon"></img>
+    //         </Button>
+    //         <Button bgColor="transparent" boderColor="#6096b4">
+    //           <img src={gitIcon} alt="ggIcon"></img>
+    //         </Button>
+    //         <Button bgColor="transparent" boderColor="#6096b4">
+    //           <img src={fbIcon} alt="ggIcon"></img>
+    //         </Button>
+    //       </div>
+    //       <div className="signup">
+    //         <p className="noAccount">Don’t have an account yet?</p>
+    //         <p className="signUp">Sign up for free</p>
+    //       </div>
+    //     </div>
+
+    //     <div className="loginPage-right">
+    //       <img src={loginImg} alt="" />
+    //     </div>
+    //   </div>
+    // </LoginContainer>
   );
 };
