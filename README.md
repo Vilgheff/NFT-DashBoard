@@ -2,6 +2,8 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+Design: https://www.figma.com/file/i2LBjsi6fIBXuc3n7wCbRB/NFT-Dashboard-Web-3.0-(Community)?type=design&node-id=1%3A609&mode=design&t=EtLJqdOkeTeWx5aH-1
+
 ## Available Scripts
 
 In the project directory, you can run:
